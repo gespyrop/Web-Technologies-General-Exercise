@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Είσοδος</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="../myStyles.css">
+		<link rel="icon" href="../icon.png">
+	</head>
+	
+	<body>
+		<br><a href="../homepage.php" class="return"> Επιστροφή στην αρχική σελίδα </a>
+		<fieldset>
+			<legend>Είσοδος</legend>
+			<form name="l" method="post">
+				<label for="username">Username </label><input type="text" id="username" name="username" class="acc">
+				<label for="pass">Password </label><input type="password" id="pass" name="pass" class="acc">
+				<input type="submit" id="sbmt" name="sbmt" value="Είσοδος" class="acc"><input type="reset" id="rst" name="rst" value="Επαναφορά" class="acc">	
+			</form>
+		</fieldset>
+		<p id="error"></p>
+		
+		<script>	
+			function sbmt(){
+				var username = document.getElementById("username").value;
+				var password = document.getElementById("pass").value;
+				
+				if(username == "" || password == ""){
+					alert("Ασυμπλήρωτα πεδία!");
+				}
+				else{
+					document.l.action ="check.php";
+				}
+			}
+			
+			document.getElementById("sbmt").onclick = function() {sbmt()};
+		</script>
+	</body>
+</html>

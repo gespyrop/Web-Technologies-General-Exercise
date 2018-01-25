@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Εγγραφή</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="../myStyles.css">
+		<link rel="icon" href="../icon.png">
+	</head>
+	
+	<body>
+		<br><a href="../homepage.php" class="return"> Επιστροφή στην αρχική σελίδα </a>
+		<fieldset>
+			<legend>Εγγραφή</legend>
+			<form name="r" method="post">
+				<label for="firstname">Όνομα </label><input type="text" id="firstname" name="firstname" class="acc">
+				<label for="lastname">Επώνυμο </label><input type="text" id="lastname" name="lastname" class="acc">
+				
+				<label for="mail">Email </label><input type="email" id="mail" name="mail" class="acc">
+				<label for="username">Username </label><input type="text" id="username" name="username" class="acc">
+				<label for="pass">Password </label><input type="password" id="pass" name="pass" class="acc">
+				<label for="confpass">Επιβεβαίωση Password </label><input type="password" id="confpass" name="confpass" class="acc">
+				<input type="submit" id="sbmt" name="sbmt" value="Εγγραφή" class="acc"><input type="reset" id="rst" name="rst" value="Επαναφορά" class="acc">
+				
+			</form>
+		</fieldset>
+		
+		<script>
+			function completed(arr){
+				for(i = 0; i < 6; i++){
+					if(arr[i] == ""){
+						alert("Συμπληρώστε όλα τα πεδία!");
+						return false;
+					}
+				}
+				return true;
+			}
+			
+			function sbmt(){
+				var firstname = document.getElementById("firstname").value;
+				var lastname = document.getElementById("lastname").value;
+				var email = document.getElementById("mail").value;
+				var username = document.getElementById("username").value;
+				var password = document.getElementById("pass").value;
+				var confpassword = document.getElementById("confpass").value;
+				
+				var details = new Array(firstname , lastname, email, username, password);
+				
+				if(completed(details) == true){
+					if(password != confpassword){
+						alert("Η επιβεβαίωση password απέτυχε!");
+					}
+					else{
+						document.r.action="rSuccess.php";
+					}
+				}
+			}
+			
+			document.getElementById("sbmt").onclick = function() {sbmt()};
+		</script>
+	</body>
+</html>
